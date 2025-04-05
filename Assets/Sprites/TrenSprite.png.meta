@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TrenSprite_0: -6751443627254309357
+      TrenSprite_1: -7124375172167526894
+      TrenSprite_2: -7525872918875455335
+      TrenSprite_3: -2847765281877000604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
