@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: bad8243fa3421c34bad1710bd6deed48
+guid: bf8497b98d229d7499be6eb1279a0a77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7816338972784678256
-    second: Screenshot 2025-01-13 000817_0
+      213: -6751443627254309357
+    second: TrenSprite_0
+  - first:
+      213: -7124375172167526894
+    second: TrenSprite_1
+  - first:
+      213: -7525872918875455335
+    second: TrenSprite_2
+  - first:
+      213: -2847765281877000604
+    second: TrenSprite_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 96
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,17 +105,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot 2025-01-13 000817_0
+      name: TrenSprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 475
-        height: 454
+        x: 4
+        y: 7
+        width: 92
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +137,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09aa023fd19c68390800000000000000
-      internalID: -7816338972784678256
+      spriteID: 31e9e6caacd0e42a0800000000000000
+      internalID: -6751443627254309357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrenSprite_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 7
+        width: 92
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21697580782212d90800000000000000
+      internalID: -7124375172167526894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrenSprite_2
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 12
+        width: 94
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99042bd347abe8790800000000000000
+      internalID: -7525872918875455335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TrenSprite_3
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 0
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46ef7027094ba78d0800000000000000
+      internalID: -2847765281877000604
       vertices: []
       indices: 
       edges: []
@@ -135,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Screenshot 2025-01-13 000817_0: -7816338972784678256
+      TrenSprite_0: -6751443627254309357
+      TrenSprite_1: -7124375172167526894
+      TrenSprite_2: -7525872918875455335
+      TrenSprite_3: -2847765281877000604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
