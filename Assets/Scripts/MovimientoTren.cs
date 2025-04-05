@@ -1,27 +1,30 @@
-using System.Collections;
 using UnityEngine;
 
 public class TrainMovement : MonoBehaviour
 {
-    public Transform[] waypoints;  // Los waypoints de las vías
+    public Transform[] waypoints;  // Los waypoints por los que se moverá el tren
     public float speed = 5f;       // Velocidad de movimiento
-    private int currentWaypoint = 0;
+    public float rotationSpeed = 5f; // Velocidad de rotación para que el tren se gire suavemente
+    private int currentWaypoint = 0; // El waypoint actual al que se dirige el tren
 
     void Update()
     {
         if (currentWaypoint < waypoints.Length)
         {
-            // Mover el tren hacia el siguiente waypoint
+            // Obtiene el siguiente waypoint (punto de destino)
             Transform target = waypoints[currentWaypoint];
+            // Calcula la dirección desde la posición actual hacia el waypoint
             Vector3 direction = target.position - transform.position;
             
-            // Girar el tren hacia la dirección de movimiento
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5f);
-            
-            // Mover el tren hacia el waypoint
-            transform.position += direction.normalized * speed * Time.deltaTime;
+            // Rotar suavemente el tren hacia la dirección del próximo waypoint
+            Vector3 targetDirection = direction.normalized;  // Dirección de destino normalizada
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection); // Calcula la rotación necesaria
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-            // Cambiar al siguiente waypoint si llegamos al actual
+            // Mover el tren hacia el waypoint
+            transform.position += targetDirection * speed * Time.deltaTime;
+
+            // Si el tren está lo suficientemente cerca del waypoint, cambia al siguiente
             if (Vector3.Distance(transform.position, target.position) < 0.1f)
             {
                 currentWaypoint++;
