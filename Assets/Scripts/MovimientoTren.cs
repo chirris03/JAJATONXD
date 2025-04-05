@@ -3,32 +3,43 @@ using UnityEngine;
 public class TrainMovement : MonoBehaviour
 {
     public Transform[] waypoints;  // Los waypoints por los que se moverá el tren
-    public float speed = 5f;       // Velocidad de movimiento
-    public float rotationSpeed = 5f; // Velocidad de rotación para que el tren se gire suavemente
+    public float speed = 2f;       // Velocidad de movimiento
     private int currentWaypoint = 0; // El waypoint actual al que se dirige el tren
+    private float t = 0f;          // Parámetro de la curva (0-1)
 
     void Update()
     {
-        if (currentWaypoint < waypoints.Length)
+        // Asegurarse de que hay más de 1 waypoint a seguir
+        if (currentWaypoint < waypoints.Length - 2) // Al menos 3 puntos para hacer la curva
         {
-            // Obtiene el siguiente waypoint (punto de destino)
-            Transform target = waypoints[currentWaypoint];
-            // Calcula la dirección desde la posición actual hacia el waypoint
-            Vector3 direction = target.position - transform.position;
-            
-            // Rotar suavemente el tren hacia la dirección del próximo waypoint
-            Vector3 targetDirection = direction.normalized;  // Dirección de destino normalizada
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection); // Calcula la rotación necesaria
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            // Obtener los puntos para la curva de Bezier: P0, P1, P2
+            Transform P0 = waypoints[currentWaypoint];            // El waypoint actual
+            Transform P1 = waypoints[currentWaypoint + 1];        // El punto de control
+            Transform P2 = waypoints[currentWaypoint + 2];        // El siguiente waypoint
 
-            // Mover el tren hacia el waypoint
-            transform.position += targetDirection * speed * Time.deltaTime;
+            // Calcula la posición en la curva de Bezier
+            Vector3 position = CalculateBezier(P0.position, P1.position, P2.position, t);
 
-            // Si el tren está lo suficientemente cerca del waypoint, cambia al siguiente
-            if (Vector3.Distance(transform.position, target.position) < 0.1f)
+            // Mueve el tren a lo largo de la curva
+            transform.position = position;
+
+            // Incrementa el parámetro t (que va de 0 a 1)
+            t += speed * Time.deltaTime;
+
+            // Si t ha alcanzado 1 (ha llegado al final de la curva), cambia al siguiente waypoint
+            if (t >= 1f)
             {
-                currentWaypoint++;
+                t = 0f;  // Resetea el parámetro t
+                currentWaypoint++; // Avanza al siguiente waypoint
             }
         }
+    }
+
+    // Función que calcula la posición en la curva de Bezier de 3 puntos
+    Vector3 CalculateBezier(Vector3 P0, Vector3 P1, Vector3 P2, float t)
+    {
+        // Fórmula de Bezier cuadrática
+        float u = 1 - t;
+        return u * u * P0 + 2 * u * t * P1 + t * t * P2;
     }
 }
